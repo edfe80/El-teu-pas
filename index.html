@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Teu Pas</title>
+
+  <!-- Llibreria p5.js (canvas generatiu) -->
+  <script src="/p5.min.js"></script>
+
+  <!-- Estils globals -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Barra superior -->
+  <header class="topbar">
+    <div>
+      <h1>El Teu Pas</h1>
+      <span>Seguiment diari d’activitat</span>
+    </div>
+    <button id="btnConfig" aria-label="Configuració">
+  <img src="/public/configuracio.png" alt="Configuració">
+	</button>
+
+  </header>
+
+  <main>
+
+    <!-- Data actual -->
+    <p class="data-avui" id="dataAvui"></p>
+
+    <!-- Animació -->
+    <div id="canvasWrapper"></div>
+
+    <!-- Barra de progrés cap a l’objectiu -->
+    <div class="progres-container">
+      <div class="progres-barra" id="barraProgres"></div>
+    </div>
+
+    <!-- Text  -->
+    <p class="text-progres">
+      <strong id="pasCount">0</strong> /
+      <span id="pasObjectiu">5000</span> passos avui
+    </p>
+
+    <!-- Estadística -->
+    <section class="stats">
+      <div class="card">
+        <span>Distància estimada</span>
+        <strong id="distEst">0 m</strong>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Overlay -->
+  <div id="overlay"></div>
+
+  <!-- Pantalla configuració -->
+  <aside id="configPanel">
+    <h2>Configuració</h2>
+
+    <label class="fila">
+      <span>Mode nit</span>
+      <input type="checkbox" id="modeNit">
+    </label>
+
+    <label>
+      Objectiu de passos
+      <input type="number" id="inputObjectiu" step="500">
+    </label>
+
+    <label>
+      Longitud del pas (m)
+      <input type="number" id="stride" step="0.01">
+    </label>
+
+    <button id="resetBtn" class="secundari">Reiniciar dia</button>
+    <button id="closeConfig" class="primari">Tancar</button>
+  </aside>
+
+  <!-- Entrada JS -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
+

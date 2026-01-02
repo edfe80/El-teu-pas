@@ -1,0 +1,298 @@
+/* RESET I BASE */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+body.nit {
+  background: #020617;
+  color: #e5e7eb;
+}
+
+/*   BARRA SUPERIOR */
+
+.topbar {
+  height: 64px;
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  color: white;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.topbar span {
+  display: block;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.topbar button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 8px;
+}
+
+/* Botó de configuració */
+
+.topbar button {
+  background: none;
+  border: none;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topbar button img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1);
+}
+
+
+/* CONTINGUT PRINCIPAL */
+
+main {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Data */
+.data-avui {
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.6;
+  margin: 0;
+}
+
+/* CANVAS */
+
+#canvasWrapper {
+  width: 100%;
+  height: 220px;
+  border-radius: 20px;
+  background: black;
+  overflow: hidden;
+}
+
+/* PROGRÉS OBJECTIU */
+
+.progres-container {
+  width: 100%;
+  height: 12px;
+
+  margin-top: 14px;     /* separació respecte l’animació */
+  margin-bottom: 6px;   /* separació del text */
+
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+
+.progres-barra {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+  transition: width 0.3s ease;
+}
+
+.text-progres {
+  text-align: center;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* TARGETES */
+
+.stats {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 100%;
+  max-width: 320px;
+
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+body.nit .card {
+  background: #020617;
+}
+
+/* OVERLAY */
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 90;
+}
+
+#overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* CONFIGURACIÓ (PANELL) */
+
+#configPanel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background: white;
+  color: #0f172a;
+
+  border-radius: 22px 22px 0 0;
+  padding: 24px 20px 28px;
+
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  z-index: 100;
+}
+
+#configPanel.show {
+  transform: translateY(0);
+}
+
+body.nit #configPanel {
+  background: #020617;
+  color: #e5e7eb;
+}
+
+#configPanel h2 {
+  margin: 0 0 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#configPanel label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+#configPanel label span {
+  opacity: 0.8;
+}
+
+/* Inputs */
+#configPanel input[type="number"] {
+  border: none;
+  border-radius: 14px;
+  padding: 10px 12px;
+  font-size: 15px;
+  background: #f1f5f9;
+}
+
+body.nit #configPanel input[type="number"] {
+  background: #020617;
+  color: #e5e7eb;
+  border: 1px solid #1e293b;
+}
+
+/* Toggle */
+.fila {
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#configPanel input[type="checkbox"] {
+  appearance: none;
+  width: 46px;
+  height: 26px;
+  background: #cbd5f5;
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+}
+
+#configPanel input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+#configPanel input[type="checkbox"]:checked {
+  background: #2563eb;
+}
+
+#configPanel input[type="checkbox"]:checked::before {
+  transform: translateX(20px);
+}
+
+#configPanel {
+
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.25);
+}
+
+body.nit #configPanel {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+}
+
+
+/* Botons */
+#configPanel button {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+  border-radius: 16px;
+  border: none;
+}
+
+button.primari {
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  color: white;
+  margin-top: 10px;
+}
+
+button.secundari {
+  background: #e5e7eb;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
