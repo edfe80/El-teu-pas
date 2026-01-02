@@ -69,7 +69,7 @@ Millores previstes
 
 Evitar el bloqueig de pantalla mentre l’app està en ús.
 
-Integració d’una API externa de localització (OpenStreetMap / Nominatim).
+Integració d’una API externa de localització
 
 Visualització d’històric setmanal o mensual de passos.
 
